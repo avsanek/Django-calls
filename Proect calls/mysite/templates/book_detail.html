@@ -1,0 +1,147 @@
+{% extends 'book_list.html' %}
+
+{% block content %}
+<style>
+ article {
+
+  padding:3%;
+
+}
+td {
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+  padding: 10px;
+
+}
+.asd {
+width: 10%;
+  border-bottom: 2px solid lightgray;
+  padding: 10px;
+}
+  </style>
+  {% block content_header %}
+    <h2>Звонок</h2>
+
+  {% endblock %}
+
+<table>
+  <tr>
+    <td class="asd"><b>Телефон1B</td>
+    <td class="asd">{{ book.Tel1B }}</td>
+    
+    </tr>
+    <tr>
+      <td class="asd"><b>Телефон2C</td>
+    <td class="asd">{{ book.Tel2C }}</td>
+
+    </tr>
+     <tr>
+    <td class="asd"><b>Тип звонкаD</td>
+    <td class="asd">{{ book.Typ_zvonkaD }}</td>
+    
+    </tr>
+    <tr>
+      <td class="asd"><b>Кто звонилE</td>
+    <td class="asd">{{ book.KtoE }}</td>
+    
+    </tr>
+</table>
+
+<table class="table mb-0">
+    <article>
+    <thead>
+      <tr>
+
+
+          <th>Начало звонкаJ</th>
+          <th>Перераспределение вызова?K</th>
+          <th>Конец звонкаL</th>
+          <th>СтатусH</th>
+
+
+
+      </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+
+
+
+             <td>{{ book.TimeStartJ|date:'Y-m-d H:i:s'  }}</td>
+             <td>{{ book.TimeMidK  }}</td>
+             <td>{{ book.TimeFFL  }}</td>
+            <td>{{ book.StatusH  }}</td>
+
+
+        </tr>
+         </article>
+    </tbody>
+  </table>
+
+
+<table class="table mb-0">
+    <article>
+    <thead>
+      <tr>
+
+
+          <th>Число1M</th>
+          <th>Число2N</th>
+          <th>РезультатO</th>
+           <th>IdQ</th>
+
+
+
+
+      </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+
+
+
+             <td>{{ book.Number1M  }}</td>
+             <td>{{ book.Number2N  }}</td>
+            <td>{{ book.StateO  }}</td>
+            <td>{{ book.IdQ  }}</td>
+
+
+
+        </tr>
+         </article>
+    </tbody>
+  </table>
+
+  <table class="table mb-0">
+    <article>
+    <thead>
+      <tr>  
+
+        <th>SIPF</th>
+          <th>SIPG</th>
+          <th>SIPI</th>
+
+
+
+
+      </tr>
+      
+    </thead>
+    <tbody>
+        <tr>
+
+
+          <td>{{ book.SIPF  }}</td>
+            <td>{{ book.SIPG  }}</td>
+            <td>{{ book.SIPI  }}</td>
+
+
+
+
+
+
+
+            
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+
+  {% endblock %}
+
+<style>
+ article {
+
+  padding:5%;
+
+}
+td {
+<!--  border-top: 2px solid lightgray;-->
+<!--  border-bottom: 2px solid lightgray;-->
+<!--  padding: 10px;-->
+
+}
+.asd {
+text-align: center;
+}
+ </style>
+
+
+
+
+
+
+
+
+
+
+
+
+<form method="GET"  >
+    <div class="input-field">
+        <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Поиск...">
+       <button class="btn" type="submit" name="action">Поиск</button>
+    </div>
+</form>
+
+
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+
+
+        <th>Телефон1B</th>
+        <th>Телефон2C</th>
+        <th >Тип звонкаD</th>
+        <th >Кто звонилE</th>
+          <th >Доп. инфо.</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in posts %}
+
+        <tr>
+
+
+
+
+
+
+
+
+         <td>{{ book.Tel1B }}</td>
+         <td> {{ book.Tel2C }}</td>
+          <td> {{ book.Typ_zvonkaD }}</td>
+            <td> {{ book.KtoE }}</td>
+
+
+          <td>
+
+            <a href="{% url 'book_detail' pk=book.pk %}"  class="btn btn-primary btn-sm">
+                детали
+            </a>
+
+
+
+
+          </td>
+
+          <td>
+
+          </td>
+        </tr>
+
+ {% endfor %}
+
+
+{% if posts.has_other_pages %}
+    <ul class="pagination">
+        {% if posts.has_previous %}
+            <li class="waves-effect"><a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
+                    class="material-icons">Начало&nbsp;</i></a></li>
+            <li class="waves-effect"><a href="?page=
+                    {{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
+                    class="material-icons">Предыдущая&nbsp;</i></a></li>
+        {% else %}
+            <li class="waves-effect"><a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
+                    class="material-icons">Начало&nbsp;</i></a></li>
+            <li class="disabled"><a href="#!"><i class="material-icons">Предыдущая&nbsp;</i></a></li>
+        {% endif %}
+        <span class="current">
+            Страница {{ posts.number }} из {{ posts.paginator.num_pages }}
+        </span>
+        {% if posts.has_next %}
+            <li class="waves-effect"><a
+                    href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
+                    class="material-icons">&nbsp;Следующая</i></a></li>
+            <li class="waves-effect"><a href="?page={{ posts.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
+                    class="material-icons">&nbsp;Конец&nbsp;</i></a></li>
+        {% else %}
+            <li class="disabled"><a href="#!"><i class="material-icons">&nbsp;Следующая</i></a></li>
+            <li class="waves-effect"><a href="?page={{ posts.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
+                    class="material-icons">&nbsp;Конец&nbsp;</i></a></li>
+        {% endif %}
+
+
+    </ul>
+{% endif %}
+
+
+
+
+    </tbody>
+  </table>
+{% endblock %}
